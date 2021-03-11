@@ -26,7 +26,7 @@ $ cd launchbase-modulo01
 
 ## 📜 Lincença
 
-Esse projeto está sob a licença do MIT. Veja o arquivo [LICENSE](https://github.com/pedrofbaltar/launchbase-modules/LICENSE).
+Esse projeto está sob a licença do MIT. Veja o arquivo [LICENSE](./LICENSE).
 
 <hr>
 
