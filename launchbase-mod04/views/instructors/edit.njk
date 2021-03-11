@@ -1,0 +1,38 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+    
+<div class="card">
+
+  <section 
+    class="avatar" 
+    style="background: url({{instructor.avatar_url}}) no-repeat  center center/ cover ">
+  </section>
+    
+  <section class="details">
+    <form action="/instructors?_method=PUT" method="post"> {# o method do HTML só aceita POST e GET,  para colocar PUT precisamos criar um depêndencia do method over-ride, para instalar: npm install method-override, para receber isso no html usamos o action e colocamos ?_method=PASSAMOS-O-MÉTODO-QUE-QUEREMOS-USAR, no caso o PUT #}
+      <h3>Editar Instrutor</h3>
+      {% include "instructors/fields.njk" %} {# um comando no nunjucks que irá incluir um arquivo externo #} 
+      <input type="hidden" name="id" value={{instructor.id}}> {# escondendo um input #}
+    </form>
+
+    <form id="form-delete" action="/instructors?_method=DELETE" method="post">
+      <input type="hidden" name="id" value={{instructor.id}}>
+      <button type="submit">Deletar</button>
+    </form>
+  </section>   
+</div>
+
+<script>
+    const formDelete = document.querySelector('#form-delete')
+
+    formDelete.addEventListener('submit', event =>{ // event = submit
+      const confirmation = confirm('Deseja deletar?')
+
+      if(!confirmation) { // se nao confirmar...
+        event.preventDefault() // vai previnir o comportamento padrão e vai cancelar o submit
+      }
+    })
+  </script>
+
+{% endblock content %}

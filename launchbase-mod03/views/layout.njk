@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    {% block head %}
+        <title>Pedro Felipe Baltar</title>
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <a href="/">Sobre</a>
+            <a href="/portfolio">Vídeos</a>
+        </div>
+    </header>
+
+    {% block content %}<!-- Criando um bloco chamado content pelo nunjucks-->
+    <!-- O código que está no block virá para cá -->
+    {% endblock %} <!-- Fechando o bloco -->
+
+    <footer>
+        <div class="footer-infos">
+            <div>
+                <strong>Endereço da empresa: </strong>Residencial Acalanto - R. Guilherme Gemballa, 260 - Sala 3 - Jardim América, Rio do Sul - SC, 89160-188
+            </div>
+
+            <div>
+                <strong>Direitos: </strong>Rocketseat © 2020 - Todos os direitos reservados
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

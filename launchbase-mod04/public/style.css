@@ -1,0 +1,265 @@
+
+:root {
+  --primary-color: #7159c1;
+  --secondary-color: #f7bf1e
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+body {
+  background-color: var(--primary-color);
+  font-family: 'Roboto', sans-serif;
+}
+
+header {
+  background-color: white;
+  width: 100%;
+  padding: 32px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.menu {
+  font-size: 22px;
+}
+
+.menu a + a { /* pegando o link precendente do segundo link (segundo a)*/
+  margin-left: 32px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #777;
+  position: relative;
+}
+
+.menu a::after { /* um elemento criado pelo css para o html */ 
+  content: ""; /* sempre precisa ter um content sendo que ele pode ser vazio */
+  width: 0%;
+  height: 2px;
+  background-color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+}
+
+.menu a:hover::after {
+  width: 100%;
+  transition: width 200ms ease-in-out; /* qual elemento vai aplicar / duração / como que vai ser a velocidade, no caso começa devagar e aumenta a velocidade com base no cubic-bezier / um delay para começar */
+}
+
+.menu a.active {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* CARD */
+
+.card {
+  background-color: white;
+  width: 900px;
+  min-height: 400px;
+
+  /* espaçamento do top e centralizando */
+  margin: 45px auto;
+
+  /* grid do card dividindo imagem dos datails */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  /* sombra */
+  box-shadow: 0px 2px 6px -2px rgba(0, 0, 0, 0.4); /* eixo-x/ eixo-y/ blur / espalhamento / cor */
+
+  /* animação */
+  /* opacity: 0; */
+  animation: up 200ms ease-out; /* short hand */
+  /* animation-name: up; passamos o nome da animação que criamos com o keyframe
+  animation-duration: 200ms;
+  animation-timing-function: ease-out; */
+
+
+  /* animation-fill-mode: forwards;  a animação para no to
+  animation-fill-mode: backwards;  a animação volta para seu estado inicial (esse já é o padrão)   
+  animation-delay: 600ms;
+  animation-play-state: running; gerencia o estado da animação, podemos deixa-la pausada e quando clicarmos algum lugar inicia-la / o runnin é o estado padrão de qualquer animação animation-direction: reverse; faz o contrário da animação podemos colocar pra alternar 
+  animation-iteration-count: infinite; quantas vezes a animação vai rodar, podemos colcar infinitas vezes */
+}
+
+@keyframes up {
+  from { /* from = 0% / onde ela começa (de onde ela vem) */
+    opacity: 0;
+    transform: translateY(15px); /* 15px no eixo */
+  } 
+  /*30% {  posso colocar animações no meio do caminho 
+
+  }*/
+  to { /* to = 100% / onde ela termina (para onde ela vai) */
+    opacity: 1;
+  }
+}
+
+.details {
+  padding: 32px;
+}
+
+.details .item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 16px 0;
+}
+
+.details .item:last-child { /* selecionando o útimo child do elemento que possui a class item */
+  border: none;
+}
+
+.details h3,
+.details .item div:nth-child(1) { /* com o nth-child podemos escolher qual elemento pegar, no caso estamos pegando a primeira div do .item */
+  color: #777;
+  line-height: 24px;
+  font-size: 14px;
+  letter-spacing: 0.7px;
+}
+
+.details .item div:nth-child(2) {
+  color: #555;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.details h3 {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.details .item span {
+  padding: 8px 16px;
+  background-color: var(--secondary-color);
+  border-radius: 16px;
+  color: #777;
+  margin-right: 4px;
+  margin-top: 8px; /* para eu poder aplicar esse margin-top precisa ser inline-block */
+  display: inline-block; /* não posso colocar block, porque por padrão o block ocupa a lina inteira, por isso deve-se utilizar o inline-block */
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+/* FORM */
+
+input,
+select {
+  width: 100%;
+  outline: none;
+  color: #555;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+input[type="radio"] { /* selecionando apenas um tipo de input, no caso o input radio */
+  width: initial; /* largura que estava no início */
+  margin-right: 4px;
+}
+
+input::placeholder {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+button[type="submit"],
+a.buttom {
+  padding: 8px 32px;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  margin-top: 32px;
+  width: 100%;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#form-delete button[type="submit"] {
+  margin-top: 8px;
+  background-color: lightcoral;
+}
+
+a.buttom {
+  display: block;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* INDEX INSTRUCTORS */
+
+.table-container {
+  display: block;
+  padding: 40px;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+.table-container table {
+  border-spacing: 0;
+}
+
+.table-container thead tr th {
+  text-align: left;
+}
+
+td,
+th {
+  padding: 16px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+th {
+  text-transform: uppercase;
+  color: #777;
+  font-size: 14px;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr td:first-child {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+}
+
+
+tbody tr td:first-child span {
+  width: 48px;
+  height: 48px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow: 3px 1px 6px -4px black;
+  border: 2px solid white;
+}
+
+tbody tr td:last-child a,
+.table-container a {
+  background-color: var(--primary-color);
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  font-size: 12px;
+  border-radius: 6px;
+}
+
+.table-container a {
+  margin: 8px;
+  display: inline-block;
+}
+
+.table-container thead tr th:last-child,
+td:last-child {
+  text-align: center;
+}
